@@ -14,7 +14,6 @@ public class Main {
      * Application main method with user friendly interface
      * @param args command line arguments
      */
-
     public static void main(String[] args) {
 
     }

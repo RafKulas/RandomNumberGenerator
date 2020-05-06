@@ -41,6 +41,13 @@ public class RegisterGen extends Generator{
         return ret;
     }
 
+    @Override
+    public double nextDouble() {
+        double ret = ((double)x/range);
+        next();
+        return ret;
+    }
+
     public static class RegisterGenBuilder {
         private int p;
         private int q;

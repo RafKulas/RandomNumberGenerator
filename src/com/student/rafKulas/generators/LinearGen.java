@@ -30,6 +30,13 @@ public class LinearGen extends Generator {
         return ret;
     }
 
+    @Override
+    public double nextDouble() {
+        double ret = ((double)x/range);
+        next();
+        return ret;
+    }
+
     public static class LinearGenBuilder{
 
         private int a;

@@ -45,4 +45,10 @@ public abstract class Generator {
         return x;
     }
 
+    /**
+     * Generate next double type random number
+     * @return double type random number
+     */
+    public  abstract double nextDouble();
+
 }
