@@ -11,13 +11,14 @@ public class RegisterGen extends Generator{
      * It uses formula that every bit on i-th position is evaluated as:
      * b_i = b_(i-p) xor b_(i-q)
      * First element have to be evaluated as every element
-     * @param rGB
+     * @param rGB builder of Register Generator
      */
 
     public RegisterGen(RegisterGenBuilder rGB) {
         super(rGB.seed);
         this.p = rGB.p;
         this.q = rGB.q;
+        this.range = 0xFFFFFFFFL; // 2^31-1
 
         x = seed;
 

@@ -20,6 +20,7 @@ public class LinearGen extends Generator {
         this.a = lGB.a;
         this.c = lGB.c;
         this.M = lGB.M;
+        this.range = lGB.M;
     }
 
     @Override

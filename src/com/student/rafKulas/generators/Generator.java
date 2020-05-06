@@ -10,6 +10,10 @@ public abstract class Generator {
      * x is last element returned by next() function
      */
     protected long x;
+    /**
+     * Range is maximum number that can be get from generator
+     */
+    protected long range;
 
     /**
      * Constructor of the Generator
