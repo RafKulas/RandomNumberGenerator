@@ -47,22 +47,23 @@ public class Main {
             long[] duo = randomDouble(rg);
             rg.next();
             if(duo[0]==-1 && duo[1]==-1) {
+                index--;
                 continue;
             }
             System.out.printf("%7d. %3d, %3d\n",index, duo[0], duo[1]);
         }
     }
 
-    // f(x) = 2x-20
+    // f(x) = 3/2x-20
     // U2 € <0, d> -> 0  <= U2 <= 50
-    // U1 € <a, b> -> 30 <= U1 <= 80
+    // U1 € <a, b> -> 30 <= U1 <= 100
     // a = 30, b = 80, d = 50
     // U2 < F(U1)
     static long[] randomDouble(Generator gen) {
-        long U2 = gen.next()%50;
+        long U2 = gen.next()%(50 + 1);
         gen.next();
-        long U1 = gen.next()%(80-30)+30;
-        if(U2 < (U1-30)) {
+        long U1 = gen.next()%(100-30 + 1)+30;
+        if(U2 < (3*U1/2-20)) {
             return new long[]{U1, U2};
         }
         return new long[]{-1, -1}; // shouldn't be printed
