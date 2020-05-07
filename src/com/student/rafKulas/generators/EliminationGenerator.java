@@ -15,6 +15,7 @@ public class EliminationGenerator extends AnyDistGenerator{
         this.d = egb.d;
         this.n = egb.n;
         this.list = new ArrayList<>();
+        gen.next();
     }
 
     public EliminationGenerator generateDuos() {
@@ -36,17 +37,20 @@ public class EliminationGenerator extends AnyDistGenerator{
     @Override
     public void printOneValue(int index) {
         System.out.printf("%7d. %5d, %5d\n",index/2,  this.list.get(index).longValue(), this.list.get(index+1).longValue());
+        gen.next();
     }
 
     @Override
     public void printValues() {
-        System.out.printf("%9s %5s %5s\n", "", "U1", "U2");
+        System.out.printf("%9s %4s %5s\n", "", "U1", "U2");
         for(int i = 0; i<list.size(); i+=2) {
             printOneValue(i);
         }
+        gen.next();
     }
 
     private long f(long x) {
+        gen.next();
         return 3*x/2-20;
     }
 

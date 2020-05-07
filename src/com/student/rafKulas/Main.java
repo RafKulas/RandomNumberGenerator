@@ -1,9 +1,6 @@
 package com.student.rafKulas;
 
-import com.student.rafKulas.generators.EliminationGenerator;
-import com.student.rafKulas.generators.UniformGenerator;
-import com.student.rafKulas.generators.LinearGen;
-import com.student.rafKulas.generators.RegisterGen;
+import com.student.rafKulas.generators.*;
 
 import java.util.Scanner;
 
@@ -23,7 +20,7 @@ public class Main {
         rg.next();
 
         Scanner in = new Scanner(System.in);
-        System.out.println("How many discrete numbers do you want to generate?");
+        System.out.println("How many reversing the distribution function method numbers do you want to generate?");
         int counter;
         try {
             counter = in.nextInt();
@@ -31,11 +28,11 @@ public class Main {
             counter = 10000;
             in.next();
         }
-        for(; counter>0; counter--) {
-            lg.next();
-            double randomDouble = lg.nextDouble();
-            System.out.printf("%5f -> %d\n", randomDouble, discreteNumber(randomDouble));
-        }
+        QuantileFunctionGenerator qfg = new QuantileFunctionGenerator.QuantileFunGenBuilder(rg).setN(counter).build();
+        qfg.
+                generateNumbers().
+                invertDistributionForAll().
+                printValues();
         System.out.println("How many elimination method random numbers do you want to generate?");
         try {
             counter = in.nextInt();
@@ -44,30 +41,8 @@ public class Main {
             in.next();
         }
         EliminationGenerator el = new EliminationGenerator.EliminationGenBuilder(lg).setN(counter).build();
-        el.generateDuos().printValues();
-    }
-
-
-
-    static int discreteNumber(double toDiscrete) {
-        if(toDiscrete<0) {
-            return -1; // wrong input, toDisrete should be in range (0, 1>
-        }
-        if(toDiscrete==0) {
-            return 0;
-        }
-        if (toDiscrete <= 0.2) {
-            return 1;
-        }
-        if (toDiscrete <= (0.2 + 0.4)) {
-            return 2;
-        }
-        if (toDiscrete <= (0.2 + 0.4 + 0.3)) {
-            return 3;
-        }
-        if (toDiscrete <= (0.2 + 0.4 + 0.3 + 0.1)) {
-            return 4;
-        }
-        return -1; // wrong input
+        el.
+                generateDuos().
+                printValues();
     }
 }
