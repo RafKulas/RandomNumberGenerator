@@ -2,8 +2,8 @@ package com.student.rafKulas.generators;
 
 public class RegisterGen extends Generator{
 
-    private int p;
-    private int q;
+    private final int p;
+    private final int q;
     private long x;
 
     /**

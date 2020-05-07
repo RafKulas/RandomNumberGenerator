@@ -42,7 +42,7 @@ public class LinearGen extends Generator {
         private int a;
         private int c;
         private long M;
-        private int seed;
+        private final int seed;
 
         /**
          * Default values in linear generator formula
