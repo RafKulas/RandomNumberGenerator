@@ -23,7 +23,6 @@ public class EliminationGenerator extends AnyDistGenerator{
             // I add 1 to include borders
 
             long U2 = gen.next()%(d + 1);
-            gen.next();
             long U1 = gen.next()%(b-a+1)+a;
 
             if (f(U1) > U2) {
@@ -36,8 +35,7 @@ public class EliminationGenerator extends AnyDistGenerator{
 
     @Override
     public void printOneValue(int index) {
-        System.out.printf("%7d. %5d, %5d\n",index/2,  this.list.get(index).longValue(), this.list.get(index+1).longValue());
-        gen.next();
+        System.out.printf("%7d. %5d, %5d\n",index/2 + 1,  this.list.get(index).longValue(), this.list.get(index+1).longValue());
     }
 
     @Override

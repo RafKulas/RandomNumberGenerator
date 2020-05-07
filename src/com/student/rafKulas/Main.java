@@ -16,8 +16,6 @@ public class Main {
     public static void main(String[] args) {
         LinearGen lg = new LinearGen.LinearGenBuilder(7).build();
         lg.next();
-        RegisterGen rg = new RegisterGen.RegisterGenBuilder(69).build();
-        rg.next();
 
         Scanner in = new Scanner(System.in);
         System.out.println("How many reversing the distribution function method numbers do you want to generate?");
@@ -28,7 +26,7 @@ public class Main {
             counter = 10000;
             in.next();
         }
-        QuantileFunctionGenerator qfg = new QuantileFunctionGenerator.QuantileFunGenBuilder(rg).setN(counter).build();
+        QuantileFunctionGenerator qfg = new QuantileFunctionGenerator.QuantileFunGenBuilder(lg).setN(counter).build();
         qfg.
                 generateNumbers().
                 invertDistributionForAll().
