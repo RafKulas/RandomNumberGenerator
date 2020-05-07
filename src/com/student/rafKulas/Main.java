@@ -1,8 +1,6 @@
 package com.student.rafKulas;
 
-import com.student.rafKulas.generators.Generator;
-import com.student.rafKulas.generators.LinearGen;
-import com.student.rafKulas.generators.RegisterGen;
+import com.student.rafKulas.generators.*;
 
 import java.util.Scanner;
 
@@ -22,7 +20,7 @@ public class Main {
         rg.next();
 
         Scanner in = new Scanner(System.in);
-        System.out.println("How many discrete numbers do you want to generate?");
+        System.out.println("How many reversing the distribution function method numbers do you want to generate?");
         int counter;
         try {
             counter = in.nextInt();
@@ -30,64 +28,21 @@ public class Main {
             counter = 10000;
             in.next();
         }
-        for(; counter>0; counter--) {
-            lg.next();
-            double randomDouble = lg.nextDouble();
-            System.out.printf("%5f -> %d\n", randomDouble, discreteNumber(randomDouble));
-        }
-        System.out.println("How many double random numbers do you want to generate?");
+        QuantileFunctionGenerator qfg = new QuantileFunctionGenerator.QuantileFunGenBuilder(rg).setN(counter).build();
+        qfg.
+                generateNumbers().
+                invertDistributionForAll().
+                printValues();
+        System.out.println("How many elimination method random numbers do you want to generate?");
         try {
             counter = in.nextInt();
         } catch (Exception e) {
             counter = 10000;
             in.next();
         }
-        System.out.printf("\n%9s%3s, %3s\n","", "U1", "U2");
-        for(int index = 1; counter>0; counter--, index++) {
-            long[] duo = randomDouble(rg);
-            rg.next();
-            if(duo[0]==-1 && duo[1]==-1) {
-                index--;
-                continue;
-            }
-            System.out.printf("%7d. %3d, %3d\n",index, duo[0], duo[1]);
-        }
-    }
-
-    // f(x) = 3/2x-20
-    // U2 € <0, d> -> 0  <= U2 <= 50
-    // U1 € <a, b> -> 30 <= U1 <= 100
-    // a = 30, b = 80, d = 50
-    // U2 < F(U1)
-    static long[] randomDouble(Generator gen) {
-        long U2 = gen.next()%(50 + 1);
-        gen.next();
-        long U1 = gen.next()%(100-30 + 1)+30;
-        if(U2 < (3*U1/2-20)) {
-            return new long[]{U1, U2};
-        }
-        return new long[]{-1, -1}; // shouldn't be printed
-    }
-
-    static int discreteNumber(double toDiscrete) {
-        if(toDiscrete<0) {
-            return -1; // wrong input, toDisrete should be in range (0, 1>
-        }
-        if(toDiscrete==0) {
-            return 0;
-        }
-        if (toDiscrete <= 0.2) {
-            return 1;
-        }
-        if (toDiscrete <= (0.2 + 0.4)) {
-            return 2;
-        }
-        if (toDiscrete <= (0.2 + 0.4 + 0.3)) {
-            return 3;
-        }
-        if (toDiscrete <= (0.2 + 0.4 + 0.3 + 0.1)) {
-            return 4;
-        }
-        return -1; // wrong input
+        EliminationGenerator el = new EliminationGenerator.EliminationGenBuilder(lg).setN(counter).build();
+        el.
+                generateDuos().
+                printValues();
     }
 }

@@ -1,6 +1,6 @@
 package com.student.rafKulas.generators;
 
-public class LinearGen extends Generator {
+public class LinearGen extends UniformGenerator {
 
     private int a;
     private int c;
