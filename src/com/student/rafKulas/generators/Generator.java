@@ -10,6 +10,10 @@ public abstract class Generator {
      * x is last element returned by next() function
      */
     protected long x;
+    /**
+     * Range is maximum number that can be get from generator
+     */
+    protected long range;
 
     /**
      * Constructor of the Generator
@@ -40,5 +44,11 @@ public abstract class Generator {
     public long getX() {
         return x;
     }
+
+    /**
+     * Generate next double type random number
+     * @return double type random number
+     */
+    public  abstract double nextDouble();
 
 }

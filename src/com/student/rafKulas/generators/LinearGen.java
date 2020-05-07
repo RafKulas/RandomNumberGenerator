@@ -20,6 +20,7 @@ public class LinearGen extends Generator {
         this.a = lGB.a;
         this.c = lGB.c;
         this.M = lGB.M;
+        this.range = lGB.M;
     }
 
     @Override
@@ -29,12 +30,19 @@ public class LinearGen extends Generator {
         return ret;
     }
 
+    @Override
+    public double nextDouble() {
+        double ret = ((double)x/range);
+        next();
+        return ret;
+    }
+
     public static class LinearGenBuilder{
 
         private int a;
         private int c;
         private long M;
-        private int seed;
+        private final int seed;
 
         /**
          * Default values in linear generator formula

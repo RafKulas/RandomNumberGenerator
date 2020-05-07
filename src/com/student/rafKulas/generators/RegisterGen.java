@@ -2,8 +2,8 @@ package com.student.rafKulas.generators;
 
 public class RegisterGen extends Generator{
 
-    private int p;
-    private int q;
+    private final int p;
+    private final int q;
     private long x;
 
     /**
@@ -11,13 +11,14 @@ public class RegisterGen extends Generator{
      * It uses formula that every bit on i-th position is evaluated as:
      * b_i = b_(i-p) xor b_(i-q)
      * First element have to be evaluated as every element
-     * @param rGB
+     * @param rGB builder of Register Generator
      */
 
     public RegisterGen(RegisterGenBuilder rGB) {
         super(rGB.seed);
         this.p = rGB.p;
         this.q = rGB.q;
+        this.range = 0xFFFFFFFFL; // 2^31-1
 
         x = seed;
 
@@ -37,6 +38,13 @@ public class RegisterGen extends Generator{
             long b_q = ((1<<(b-q))&x) >> (b-q);
             x += (b_p^b_q)<<b;
         }
+        return ret;
+    }
+
+    @Override
+    public double nextDouble() {
+        double ret = ((double)x/range);
+        next();
         return ret;
     }
 
