@@ -1,6 +1,6 @@
 package com.student.rafKulas.generators;
 
-public abstract class Generator {
+public abstract class UniformGenerator {
     /**
      * seed for random numbers generator
      */
@@ -20,7 +20,7 @@ public abstract class Generator {
      * Subclass of the Generator should implement it's own way of making first element (x)
      * @param seed which help creating next elements
      */
-    public Generator(int seed) {
+    public UniformGenerator(int seed) {
         this.seed = seed;
     }
 

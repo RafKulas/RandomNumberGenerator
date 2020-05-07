@@ -1,6 +1,6 @@
 package com.student.rafKulas.generators;
 
-public class RegisterGen extends Generator{
+public class RegisterGen extends UniformGenerator {
 
     private final int p;
     private final int q;
