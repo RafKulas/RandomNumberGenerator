@@ -55,8 +55,8 @@ public class Main {
 
     // f(x) = 2x-20
     // U2 € <0, d> -> 0  <= U2 <= 50
-    // U1 € <a, b> -> 30 <= U1 <= 100
-    // a = 30, b = 100, d = 50
+    // U1 € <a, b> -> 30 <= U1 <= 80
+    // a = 30, b = 80, d = 50
     // U2 < F(U1)
     static long[] randomDouble(Generator gen) {
         long U2 = gen.next()%50;
